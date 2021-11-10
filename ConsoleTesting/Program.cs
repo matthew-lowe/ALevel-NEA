@@ -1,18 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
+using MathsLibrary;
 using MathsLibrary.Token;
 
 namespace ConsoleTesting
 {
     class Program
     {
+        static void PrintList(List<IToken> tokens)
+        {
+            foreach (IToken t in tokens)
+            {
+                Console.Write(t.ToString() + " ");
+            }
+        }
+
         static void Main(string[] args)
         {
-            List<IToken> myList = new List<IToken>
-            {
-                new Token(TokenType.Add),
-                new Token<double>(TokenType.Num, 420.69)
-            };
+            string input = "1 + 2 - 420.69";
+            var lexer = new Lexer();
+            var tokens = lexer.Tokenize(input);
+            PrintList(tokens);
         }
     }
 }

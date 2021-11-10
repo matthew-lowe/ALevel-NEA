@@ -8,5 +8,6 @@
         Mul,
         Div,
         Num,
+        Dot,
     }
 }

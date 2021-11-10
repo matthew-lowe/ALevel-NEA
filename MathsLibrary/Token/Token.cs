@@ -8,6 +8,11 @@ namespace MathsLibrary.Token
         {
             Type = type;
         }
+
+        public override string ToString()
+        {
+            return Type.ToString();
+        }
     }
 
     public class Token<TValue> : Token, IToken<TValue>
@@ -17,6 +22,11 @@ namespace MathsLibrary.Token
         public Token(TokenType type, TValue value) : base(type)
         {
             Value = value;
+        }
+
+        public override string ToString()
+        {
+            return "[" + base.ToString() + " " + Value.ToString() + "]";
         }
     }
 }
