@@ -59,7 +59,9 @@ namespace MathsLibrary
                     newList[^1] = new Token<double>(TokenType.Num, oldValue + nextValue / Math.Pow(10, numDigits));
                     
                     i += 1;
-                } else {
+                }
+                else
+                {
                     newList.Add(tokens[i]);
                 }
             }
@@ -82,6 +84,8 @@ namespace MathsLibrary
                 '*' => TokenType.Mul,
                 '/' => TokenType.Mul,
                 '.' => TokenType.Dot,
+                '(' => TokenType.LBracket,
+                ')' => TokenType.RBracket,
                 _ => TokenType.Nil
             };
         }

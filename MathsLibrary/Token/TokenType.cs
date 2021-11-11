@@ -9,5 +9,7 @@
         Div,
         Num,
         Dot,
+        LBracket,
+        RBracket,
     }
 }

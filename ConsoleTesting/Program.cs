@@ -19,7 +19,10 @@ namespace ConsoleTesting
         {
             string input = "1 + 2 - 420.69";
             var lexer = new Lexer();
+            var parser = new Parser();
             var tokens = lexer.Tokenize(input);
+            var tree = parser.Next(tokens);
+            tree.Print();
             PrintList(tokens);
         }
     }
