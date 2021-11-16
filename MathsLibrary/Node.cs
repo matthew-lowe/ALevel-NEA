@@ -2,7 +2,7 @@ using MathsLibrary;
 using MathsLibrary.Token;
 
 namespace MathsLibrary {
-    public class Node : INode, IToken {
+    public class Node : INode {
         public INode Left { get; set; }
         public INode Right { get; set; }
         public TokenType Type { get; set; }
