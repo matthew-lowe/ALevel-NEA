@@ -1,3 +1,5 @@
+using System;
+
 namespace MathsLibrary.Token
 {
     public class Token : IToken

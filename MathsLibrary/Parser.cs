@@ -14,7 +14,7 @@ namespace MathsLibrary {
 			return TokensToAst(input);
 		}
 
-		private static readonly TokenType[] tokenPriority = {TokenType.Add, TokenType.Sub, TokenType.Mul, TokenType.Div, TokenType.Num};
+		private static readonly TokenType[] tokenPriority = {TokenType.Add, TokenType.Sub, TokenType.Mul, TokenType.Div, TokenType.Exp, TokenType.Num};
 
 		private static INode TokensToAst(List<IToken> input) {
 			// Sometimes with functions, funky stuff happens

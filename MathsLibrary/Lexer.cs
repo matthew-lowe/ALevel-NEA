@@ -83,6 +83,7 @@ namespace MathsLibrary
                 '-' => TokenType.Sub,
                 '*' => TokenType.Mul,
                 '/' => TokenType.Mul,
+                '^' => TokenType.Exp,
                 '.' => TokenType.Dot,
                 '(' => TokenType.LBracket,
                 ')' => TokenType.RBracket,

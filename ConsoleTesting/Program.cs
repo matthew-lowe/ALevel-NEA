@@ -17,13 +17,16 @@ namespace ConsoleTesting
 
         static void Main(string[] args)
         {
-            string input = "1 + 2 - 420.69";
-            var lexer = new Lexer();
-            var parser = new Parser();
-            var tokens = lexer.Tokenize(input);
-            var tree = parser.Next(tokens);
-            tree.Print();
-            PrintList(tokens);
+            while (true) {
+                Console.Write("> ");
+                string input = Console.ReadLine();
+                var lexer = new Lexer();
+                var parser = new Parser();
+                var tokens = lexer.Tokenize(input);
+                var tree = parser.Next(tokens);
+                var result = Executor.Evaluate(tree);
+                Console.WriteLine(result);
+            }
         }
     }
 }

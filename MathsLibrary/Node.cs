@@ -1,4 +1,4 @@
-using MathsLibrary;
+using System;
 using MathsLibrary.Token;
 
 namespace MathsLibrary {
@@ -39,6 +39,14 @@ namespace MathsLibrary {
         }
     }
 
+    public static class NodeCalculator {
+        public static Node<TValue> Add<TValue>(Node<TValue> a, Node<TValue> b) => NodeFactory.FromValue<TValue>(a.Type, (dynamic) a.Value + b.Value);
+        public static Node<TValue> Sub<TValue>(Node<TValue> a, Node<TValue> b) => NodeFactory.FromValue<TValue>(a.Type, (dynamic) a.Value - b.Value);
+        public static Node<TValue> Mul<TValue>(Node<TValue> a, Node<TValue> b) => NodeFactory.FromValue<TValue>(a.Type, (dynamic) a.Value * b.Value);
+        public static Node<TValue> Div<TValue>(Node<TValue> a, Node<TValue> b) => NodeFactory.FromValue<TValue>(a.Type, (dynamic) a.Value / b.Value);
+        public static Node<double> Exp(Node<double> a, Node<double> b) => NodeFactory.FromValue<double>(a.Type, Math.Pow(a.Value,  b.Value));
+    }
+
     public static class NodeFactory {
         public static INode FromToken(IToken token) {
             if (token.Type == TokenType.Num)
@@ -47,5 +55,8 @@ namespace MathsLibrary {
                 return new Node(token.Type);
         }
 
+        public static Node<TValue> FromValue<TValue>(TokenType type, TValue value) {
+            return new Node<TValue>(type, value);
+        }
     }
 }

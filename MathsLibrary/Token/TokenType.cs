@@ -7,6 +7,7 @@
         Sub,
         Mul,
         Div,
+        Exp,
         Num,
         Dot,
         LBracket,
