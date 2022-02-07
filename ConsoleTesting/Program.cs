@@ -16,16 +16,12 @@ namespace ConsoleTesting {
             while (true) {
                 Console.Write("> ");
                 string input = Console.ReadLine();
-                try {
-                    var lexer = new Lexer();
-                    var parser = new Parser();
-                    var tokens = lexer.Tokenize(input);
-                    var tree = parser.Next(tokens);
-                    var result = Executor.Evaluate(tree);
-                    Console.WriteLine(Math.Round(result, 8));
-                } catch (Exception e) {
-                    Console.WriteLine("There may or may not have been a mild oopsie");
-                }
+                var lexer = new Lexer();
+                var parser = new Parser();
+                var tokens = lexer.Tokenize(input);
+                var tree = parser.Next(tokens);
+                var result = Executor.Evaluate(tree);
+                Console.WriteLine(Math.Round(result, 8));
             }
         }
     }

@@ -10,6 +10,7 @@
         Exp,
         Num,
         Dot,
+        Char,
         LBracket,
         RBracket,
     }

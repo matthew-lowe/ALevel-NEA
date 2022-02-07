@@ -1,3 +1,4 @@
+using System;
 using MathsLibrary.Token;
 
 namespace MathsLibrary {
@@ -20,6 +21,18 @@ namespace MathsLibrary {
                     return NodeCalculator.Div(left, right);
                 case TokenType.Exp:
                     return NodeCalculator.Exp(left, right);
+                case TokenType.Char:
+                    var strRoot = (Node<string>) root;
+                    var rootValue = strRoot.Value;
+                    var funcHandler = FunctionRegistry.GetFunction(rootValue);
+                    var constant = FunctionRegistry.GetConstant(rootValue);
+
+                    if (funcHandler is not null)
+                        return NodeCalculator.Func(right, funcHandler);
+                    else if (constant is not null)
+                        return NodeFactory.FromValue<double>(TokenType.Num, (double) constant);
+                    else
+                        throw new Exception("Fuckwit");
                 default:
                     return root;
             }

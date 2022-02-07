@@ -40,6 +40,12 @@ namespace MathsLibrary
                         tokens.Add(new Token<double>(TokenType.Num, value));
 					
                     break;
+                case TokenType.Char:
+                    if (tokens.Count >= 1 && tokens[^1].Type == TokenType.Char)
+                        ((IToken<string>) tokens[^1]).Value += c.ToString().ToLower();
+                    else
+                        tokens.Add(new Token<string>(TokenType.Char, c.ToString().ToLower()));
+                    break;
                 default:
                     tokens.Add(new Token.Token(type));
                     break;
@@ -76,6 +82,9 @@ namespace MathsLibrary
         {
             if (char.IsDigit(c))
                 return TokenType.Num;
+
+            if (char.IsLetter(c))
+                return TokenType.Char;
 
             return c switch
             {

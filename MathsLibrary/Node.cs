@@ -40,19 +40,30 @@ namespace MathsLibrary {
     }
 
     public static class NodeCalculator {
-        public static Node<TValue> Add<TValue>(Node<TValue> a, Node<TValue> b) => NodeFactory.FromValue<TValue>(a.Type, (dynamic) a.Value + b.Value);
-        public static Node<TValue> Sub<TValue>(Node<TValue> a, Node<TValue> b) => NodeFactory.FromValue<TValue>(a.Type, (dynamic) a.Value - b.Value);
-        public static Node<TValue> Mul<TValue>(Node<TValue> a, Node<TValue> b) => NodeFactory.FromValue<TValue>(a.Type, (dynamic) a.Value * b.Value);
-        public static Node<TValue> Div<TValue>(Node<TValue> a, Node<TValue> b) => NodeFactory.FromValue<TValue>(a.Type, (dynamic) a.Value / b.Value);
-        public static Node<double> Exp(Node<double> a, Node<double> b) => NodeFactory.FromValue<double>(a.Type, Math.Pow(a.Value,  b.Value));
+        public static Node<TValue> Add<TValue>(Node<TValue> a, Node<TValue> b) =>
+            NodeFactory.FromValue<TValue>(a.Type, (dynamic) a.Value + b.Value);
+        public static Node<TValue> Sub<TValue>(Node<TValue> a, Node<TValue> b) =>
+            NodeFactory.FromValue<TValue>(a.Type, (dynamic) a.Value - b.Value);
+        public static Node<TValue> Mul<TValue>(Node<TValue> a, Node<TValue> b) =>
+            NodeFactory.FromValue<TValue>(a.Type, (dynamic) a.Value * b.Value);
+        public static Node<TValue> Div<TValue>(Node<TValue> a, Node<TValue> b) =>
+            NodeFactory.FromValue<TValue>(a.Type, (dynamic) a.Value / b.Value);
+        public static Node<double> Exp(Node<double> a, Node<double> b) =>
+            NodeFactory.FromValue<double>(a.Type, Math.Pow(a.Value,  b.Value));
+
+        public static Node<double> Func(Node<double> a, FuncHandler handler) =>
+            NodeFactory.FromValue<double>(a.Type, handler(a.Value));
     }
 
     public static class NodeFactory {
-        public static INode FromToken(IToken token) {
-            if (token.Type == TokenType.Num)
-                return new Node<double>(TokenType.Num, ((IToken<double>) token).Value);
-            else
-                return new Node(token.Type);
+        public static INode FromToken(IToken token)
+        {
+            return token.Type switch
+            {
+                TokenType.Num => new Node<double>(TokenType.Num, ((IToken<double>) token).Value),
+                TokenType.Char => new Node<string>(TokenType.Char, ((IToken<string>) token).Value),
+                _ => new Node(token.Type)
+            };
         }
 
         public static Node<TValue> FromValue<TValue>(TokenType type, TValue value) {
