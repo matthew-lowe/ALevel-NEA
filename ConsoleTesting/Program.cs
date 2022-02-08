@@ -5,14 +5,14 @@ using MathsLibrary.Token;
 
 namespace ConsoleTesting {
     class Program {
-        static void PrintList(List<IToken> tokens) {
-            foreach (IToken t in tokens) {
+        private static void PrintList(IEnumerable<IToken> tokens) {
+            foreach (var t in tokens) {
                 Console.Write(t.ToString() + " ");
             }
             Console.WriteLine();
         }
 
-        static void Main(string[] args) {
+        private static void Main(string[] args) {
             var lexer = new Lexer();
             var parser = new Parser();
             

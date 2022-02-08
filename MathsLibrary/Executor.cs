@@ -2,7 +2,7 @@ using System;
 using MathsLibrary.Token;
 
 namespace MathsLibrary {
-    public class Executor {
+    public static class Executor {
         public static double Evaluate(INode root) {
             return ((Node<double>) Executor.Reduce(root, 0)).Value;
         }
