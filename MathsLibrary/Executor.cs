@@ -4,12 +4,18 @@ using MathsLibrary.Token;
 namespace MathsLibrary {
     public class Executor {
         public static double Evaluate(INode root) {
-            return ((Node<double>) Executor.Reduce(root)).Value;
-        } 
+            return ((Node<double>) Executor.Reduce(root, 0)).Value;
+        }
 
-        public static INode Reduce(INode root) {
-                var left = root.Left is null ? null : (Node<double>) Executor.Reduce(root.Left);
-                var right = root.Right is null ? null : (Node<double>) Executor.Reduce(root.Right);
+        public static double Evaluate(INode root, double value)
+        {
+            return ((Node<double>) Executor.Reduce(root, value)).Value;
+        }
+
+        public static INode Reduce(INode root, double value) {
+            var left = root.Left is null ? null : (Node<double>) Executor.Reduce(root.Left, value);
+            var right = root.Right is null ? null : (Node<double>) Executor.Reduce(root.Right, value);
+            
             switch (root.Type) {
                 case TokenType.Add:
                     return NodeCalculator.Add(left, right);
@@ -30,9 +36,9 @@ namespace MathsLibrary {
                     if (funcHandler is not null)
                         return NodeCalculator.Func(right, funcHandler);
                     else if (constant is not null)
-                        return NodeFactory.FromValue<double>(TokenType.Num, (double) constant);
+                        return NodeFactory.FromValue(TokenType.Num, (double) constant);
                     else
-                        throw new Exception("Fuckwit");
+                        return NodeFactory.FromValue(TokenType.Num, value);
                 default:
                     return root;
             }
