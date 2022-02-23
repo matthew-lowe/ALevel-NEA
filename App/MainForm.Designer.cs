@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 
 namespace App
 {
@@ -46,6 +47,7 @@ namespace App
             this.segmentCountTextBox = new System.Windows.Forms.TextBox();
             this.areaLabel = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.areaCalculateButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // chartContainer
@@ -109,14 +111,14 @@ namespace App
             this.xLowerTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.xLowerTextBox.Location = new System.Drawing.Point(686, 130);
             this.xLowerTextBox.Name = "xLowerTextBox";
-            this.xLowerTextBox.Size = new System.Drawing.Size(27, 30);
+            this.xLowerTextBox.Size = new System.Drawing.Size(40, 30);
             this.xLowerTextBox.TabIndex = 6;
             this.xLowerTextBox.Text = "0";
             // 
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.label4.Location = new System.Drawing.Point(719, 130);
+            this.label4.Location = new System.Drawing.Point(732, 130);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(58, 30);
             this.label4.TabIndex = 7;
@@ -125,9 +127,9 @@ namespace App
             // xUpperTextBox
             // 
             this.xUpperTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.xUpperTextBox.Location = new System.Drawing.Point(783, 130);
+            this.xUpperTextBox.Location = new System.Drawing.Point(796, 130);
             this.xUpperTextBox.Name = "xUpperTextBox";
-            this.xUpperTextBox.Size = new System.Drawing.Size(27, 30);
+            this.xUpperTextBox.Size = new System.Drawing.Size(40, 30);
             this.xUpperTextBox.TabIndex = 8;
             this.xUpperTextBox.Text = "5";
             // 
@@ -140,6 +142,7 @@ namespace App
             this.areaMethodComboBox.Name = "areaMethodComboBox";
             this.areaMethodComboBox.Size = new System.Drawing.Size(227, 33);
             this.areaMethodComboBox.TabIndex = 9;
+            this.areaMethodComboBox.Text = "Select to see area";
             // 
             // label5
             // 
@@ -164,7 +167,7 @@ namespace App
             this.segmentCountTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.segmentCountTextBox.Location = new System.Drawing.Point(834, 315);
             this.segmentCountTextBox.Name = "segmentCountTextBox";
-            this.segmentCountTextBox.Size = new System.Drawing.Size(27, 30);
+            this.segmentCountTextBox.Size = new System.Drawing.Size(40, 30);
             this.segmentCountTextBox.TabIndex = 12;
             this.segmentCountTextBox.Text = "0";
             // 
@@ -186,11 +189,23 @@ namespace App
             this.label7.TabIndex = 15;
             this.label7.Text = "Area:";
             // 
+            // areaCalculateButton
+            // 
+            this.areaCalculateButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.areaCalculateButton.Location = new System.Drawing.Point(683, 378);
+            this.areaCalculateButton.Name = "areaCalculateButton";
+            this.areaCalculateButton.Size = new System.Drawing.Size(175, 50);
+            this.areaCalculateButton.TabIndex = 16;
+            this.areaCalculateButton.Text = "Calculate Area";
+            this.areaCalculateButton.UseVisualStyleBackColor = true;
+            this.areaCalculateButton.Click += new System.EventHandler(this.areaCalculateButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(981, 450);
+            this.Controls.Add(this.areaCalculateButton);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.areaLabel);
             this.Controls.Add(this.segmentCountTextBox);
@@ -211,6 +226,8 @@ namespace App
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.Button areaCalculateButton;
 
         private System.Windows.Forms.Label label7;
 

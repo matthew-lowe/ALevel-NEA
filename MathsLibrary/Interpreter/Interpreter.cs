@@ -13,11 +13,18 @@
 
         public double Interpret(string input, double x = 0)
         {
-            var tokens = _lexer.Tokenize(input);
-            var tree = _parser.Next(tokens);
-            var result = Executor.Evaluate(tree, x);
+            var result = Executor.Evaluate(ToTree(input), x);
 
             return result;
         }
+
+        public INode ToTree(string input)
+        {
+            var tokens = _lexer.Tokenize(input);
+            var tree = _parser.Next(tokens);
+
+            return tree;
+        }
+        
     }
 }
