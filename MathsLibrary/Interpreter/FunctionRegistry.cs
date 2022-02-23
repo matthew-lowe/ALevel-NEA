@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace MathsLibrary
+namespace MathsLibrary.Interpreter
 {
     public delegate double FuncHandler(double a);
     

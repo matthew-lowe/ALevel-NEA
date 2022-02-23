@@ -1,4 +1,4 @@
-﻿namespace MathsLibrary
+﻿namespace MathsLibrary.Interpreter
 {
     public class Interpreter
     {

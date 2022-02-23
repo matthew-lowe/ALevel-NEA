@@ -1,7 +1,7 @@
 using System;
-using MathsLibrary.Token;
+using MathsLibrary.Interpreter.Token;
 
-namespace MathsLibrary {
+namespace MathsLibrary.Interpreter {
     public class Node : INode {
         public INode Left { get; set; }
         public INode Right { get; set; }
@@ -20,7 +20,7 @@ namespace MathsLibrary {
         }
 
         public void Print(string side) {
-            System.Console.WriteLine(side + ": " + ToString());
+            Console.WriteLine(side + ": " + ToString());
 
             Left?.Print(side + "L");
             Right?.Print(side + "R");
@@ -35,7 +35,7 @@ namespace MathsLibrary {
         }
 
         public override string ToString() {
-            return "[" + base.ToString() + " " + Value.ToString() + "]";
+            return "[" + base.ToString() + " " + Value + "]";
         }
     }
 
@@ -49,10 +49,10 @@ namespace MathsLibrary {
         public static Node<TValue> Div<TValue>(Node<TValue> a, Node<TValue> b) =>
             NodeFactory.FromValue<TValue>(a.Type, (dynamic) a.Value / b.Value);
         public static Node<double> Exp(Node<double> a, Node<double> b) =>
-            NodeFactory.FromValue<double>(a.Type, Math.Pow(a.Value,  b.Value));
+            NodeFactory.FromValue(a.Type, Math.Pow(a.Value,  b.Value));
 
         public static Node<double> Func(Node<double> a, FuncHandler handler) =>
-            NodeFactory.FromValue<double>(a.Type, handler(a.Value));
+            NodeFactory.FromValue(a.Type, handler(a.Value));
     }
 
     public static class NodeFactory {

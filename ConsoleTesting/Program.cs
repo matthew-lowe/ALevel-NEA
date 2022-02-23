@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using MathsLibrary;
-using MathsLibrary.Token;
+using MathsLibrary.Interpreter;
+using MathsLibrary.Interpreter.Token;
 
 namespace ConsoleTesting {
     class Program {

@@ -8,6 +8,7 @@ using LiveChartsCore.Defaults;
 using LiveChartsCore.SkiaSharpView;
 using LiveChartsCore.SkiaSharpView.WinForms;
 using MathsLibrary;
+using MathsLibrary.Interpreter;
 
 namespace App
 {
@@ -54,19 +55,26 @@ namespace App
             string function = functionTextBox.Text;
             string lower_text = xLowerTextBox.Text;
             string upper_text = xUpperTextBox.Text;
-
+            
             double upper_bound = _interpreter.Interpret(upper_text);
             double lower_bound = _interpreter.Interpret(lower_text);
 
-            Console.WriteLine(lower_bound);
-            Console.WriteLine(upper_bound);
-
             var points = new List<ObservablePoint>();
 
-            for (double i = lower_bound; i < upper_bound; i += _resolution)
-                points.Add(new ObservablePoint(i, _interpreter.Interpret(function, i)));
+            try
+            {
+                for (double i = lower_bound; i < upper_bound; i += _resolution)
+                    points.Add(new ObservablePoint(i, _interpreter.Interpret(function, i)));
+            }
+            catch (Exception)
+            {
+                functionTextBox.BackColor = Color.IndianRed;
+                Console.WriteLine("cum");
+                return;
+            }
 
             _chart.Series.First().Values = points;
+            functionTextBox.BackColor = SystemColors.Window;
         }
     }
 }

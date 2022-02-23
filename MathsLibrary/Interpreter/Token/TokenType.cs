@@ -1,4 +1,4 @@
-﻿namespace MathsLibrary.Token
+﻿namespace MathsLibrary.Interpreter.Token
 {
     public enum TokenType
     {

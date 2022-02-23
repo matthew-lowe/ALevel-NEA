@@ -1,6 +1,4 @@
-using System;
-
-namespace MathsLibrary.Token
+namespace MathsLibrary.Interpreter.Token
 {
     public class Token : IToken
     {

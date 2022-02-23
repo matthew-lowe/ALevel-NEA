@@ -1,11 +1,9 @@
-
-   
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System;
-using MathsLibrary.Token;
+using MathsLibrary.Interpreter.Token;
 
-namespace MathsLibrary {
+namespace MathsLibrary.Interpreter {
 	public class Parser {
 		public INode Next(List<IToken> input) {
 			if (!VerifyBrackets(input))

@@ -1,20 +1,21 @@
 using System;
-using MathsLibrary.Token;
+using System.IO;
+using MathsLibrary.Interpreter.Token;
 
-namespace MathsLibrary {
+namespace MathsLibrary.Interpreter {
     public static class Executor {
         public static double Evaluate(INode root) {
-            return ((Node<double>) Executor.Reduce(root, 0)).Value;
+            return ((Node<double>) Reduce(root, 0)).Value;
         }
 
         public static double Evaluate(INode root, double value)
         {
-            return ((Node<double>) Executor.Reduce(root, value)).Value;
+            return ((Node<double>) Reduce(root, value)).Value;
         }
 
         public static INode Reduce(INode root, double value) {
-            var left = root.Left is null ? null : (Node<double>) Executor.Reduce(root.Left, value);
-            var right = root.Right is null ? null : (Node<double>) Executor.Reduce(root.Right, value);
+            var left = root.Left is null ? null : (Node<double>) Reduce(root.Left, value);
+            var right = root.Right is null ? null : (Node<double>) Reduce(root.Right, value);
             
             switch (root.Type) {
                 case TokenType.Add:
@@ -37,8 +38,10 @@ namespace MathsLibrary {
                         return NodeCalculator.Func(right, funcHandler);
                     else if (constant is not null)
                         return NodeFactory.FromValue(TokenType.Num, (double) constant);
-                    else
+                    else if (rootValue == "x")
                         return NodeFactory.FromValue(TokenType.Num, value);
+                    else
+                        throw new InvalidDataException("Function or constant not recognised!");
                 default:
                     return root;
             }

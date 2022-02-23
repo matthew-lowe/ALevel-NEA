@@ -1,6 +1,6 @@
-using MathsLibrary.Token;
+using MathsLibrary.Interpreter.Token;
 
-namespace MathsLibrary
+namespace MathsLibrary.Interpreter
 {
     public interface INode : IToken
     {

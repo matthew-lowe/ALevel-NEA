@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using MathsLibrary.Token;
+using MathsLibrary.Interpreter.Token;
 
-namespace MathsLibrary
+namespace MathsLibrary.Interpreter
 {
     public class Lexer
     {

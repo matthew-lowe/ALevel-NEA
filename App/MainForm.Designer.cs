@@ -40,6 +40,12 @@ namespace App
             this.xLowerTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.xUpperTextBox = new System.Windows.Forms.TextBox();
+            this.areaMethodComboBox = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.segmentCountTextBox = new System.Windows.Forms.TextBox();
+            this.areaLabel = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // chartContainer
@@ -105,7 +111,7 @@ namespace App
             this.xLowerTextBox.Name = "xLowerTextBox";
             this.xLowerTextBox.Size = new System.Drawing.Size(27, 30);
             this.xLowerTextBox.TabIndex = 6;
-            this.xLowerTextBox.Text = "-5";
+            this.xLowerTextBox.Text = "0";
             // 
             // label4
             // 
@@ -125,11 +131,72 @@ namespace App
             this.xUpperTextBox.TabIndex = 8;
             this.xUpperTextBox.Text = "5";
             // 
+            // areaMethodComboBox
+            // 
+            this.areaMethodComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.areaMethodComboBox.FormattingEnabled = true;
+            this.areaMethodComboBox.Items.AddRange(new object[] {"Trapezium", "Mid-ordinate", "Simpson\'s"});
+            this.areaMethodComboBox.Location = new System.Drawing.Point(686, 276);
+            this.areaMethodComboBox.Name = "areaMethodComboBox";
+            this.areaMethodComboBox.Size = new System.Drawing.Size(227, 33);
+            this.areaMethodComboBox.TabIndex = 9;
+            // 
+            // label5
+            // 
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.label5.Location = new System.Drawing.Point(686, 243);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(227, 30);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Area calculation method:";
+            // 
+            // label6
+            // 
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.label6.Location = new System.Drawing.Point(686, 315);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(153, 30);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Segment count:";
+            // 
+            // segmentCountTextBox
+            // 
+            this.segmentCountTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.segmentCountTextBox.Location = new System.Drawing.Point(834, 315);
+            this.segmentCountTextBox.Name = "segmentCountTextBox";
+            this.segmentCountTextBox.Size = new System.Drawing.Size(27, 30);
+            this.segmentCountTextBox.TabIndex = 12;
+            this.segmentCountTextBox.Text = "0";
+            // 
+            // areaLabel
+            // 
+            this.areaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.areaLabel.Location = new System.Drawing.Point(752, 345);
+            this.areaLabel.Name = "areaLabel";
+            this.areaLabel.Size = new System.Drawing.Size(161, 30);
+            this.areaLabel.TabIndex = 14;
+            this.areaLabel.Text = "N/A";
+            // 
+            // label7
+            // 
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.label7.Location = new System.Drawing.Point(686, 345);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(60, 30);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Area:";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(981, 450);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.areaLabel);
+            this.Controls.Add(this.segmentCountTextBox);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.areaMethodComboBox);
             this.Controls.Add(this.xUpperTextBox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.xLowerTextBox);
@@ -144,6 +211,17 @@ namespace App
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.Label label7;
+
+        private System.Windows.Forms.Label areaLabel;
+
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox segmentCountTextBox;
+
+        private System.Windows.Forms.Label label5;
+
+        private System.Windows.Forms.ComboBox areaMethodComboBox;
 
         private System.Windows.Forms.Button plotButton;
         private System.Windows.Forms.Label label3;
