@@ -20,19 +20,16 @@ namespace ConsoleTesting {
             while (true) {
                 Console.Write("> ");
                 var input = Console.ReadLine();
+                Console.WriteLine("Input:", input);
                 
-                Console.Write("a = ");
-                var a = Executor.Evaluate(parser.Next(lexer.Tokenize(Console.ReadLine())));
-                
-                Console.Write("b = ");
-                var b = Executor.Evaluate(parser.Next(lexer.Tokenize(Console.ReadLine())));
-                
-                Console.Write("n = ");
-                var n = Executor.Evaluate(parser.Next(lexer.Tokenize(Console.ReadLine())));
-                
+                Console.Write("x = ");
+                var input_x = Console.ReadLine();
+                System.Console.WriteLine("x=", input_x);
+                var x = Executor.Evaluate(parser.Next(lexer.Tokenize(input_x)));
+
                 var tokens = lexer.Tokenize(input);
                 var tree = parser.Next(tokens);
-                var result = Integration.Simpsons(tree, a, b, (int) n);
+                var result = Differentiation.Differentiate(tree, 4);
                 Console.WriteLine(Math.Round(result, 8));
             }
         }
