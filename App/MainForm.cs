@@ -2,12 +2,6 @@
 using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using LiveChartsCore;
-using LiveChartsCore.Defaults;
-using LiveChartsCore.Geo;
-using LiveChartsCore.SkiaSharpView;
-using LiveChartsCore.SkiaSharpView.WinForms;
 using MathsLibrary;
 using MathsLibrary.Interpreter;
 
@@ -37,35 +31,14 @@ namespace App
             Graph.Name = "graphControl";
             Graph.TabIndex = 0;
 
-            double[] X = {1, 2, 3, 4, 5};
-            double[] Y = {1, 2, 3, 2, 1};
-            var series = new CoordinateSeries(X, Y);
+            var series = new CoordinateSeries(Array.Empty<double>(), Array.Empty<double>(), this);
             Graph.Series = new CoordinateSeries[] {series};
 
             Controls.Add(Graph);
+            UpdatePlot();
         }
 
-        private void colourComboBox_TextChanged(object sender, EventArgs e)
-        {
-            Settings.Colour = Color.FromKnownColor((KnownColor) Enum.Parse(typeof(KnownColor), ((ToolStripComboBox) sender).Text));
-        }
-
-        private void graphWidthTextBox_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                Settings.GraphWidth = (int) _interpreter.Interpret(graphWidthTextBox.Text);
-            }
-            // If there's something invalid, nothing can be done so just ignore it and move on
-            catch (Exception) {}
-        }
-        
-        private void togglePointsButton_Click(object sender, EventArgs e)
-        {
-            Settings.PointsVisible = !Settings.PointsVisible;
-        }
-
-        private void plotButton_Click_1(object sender, EventArgs e)
+        public void UpdatePlot()
         {
             string function = functionTextBox.Text;
             string upper_text = xUpperTextBox.Text;
@@ -96,6 +69,41 @@ namespace App
             Graph.Series[0].X = X.ToArray();
             Graph.Series[0].Y = Y.ToArray();
             Graph.Invalidate();
+        }
+
+        private void colourComboBox_TextChanged(object sender, EventArgs e)
+        {
+            Settings.Colour = Color.FromKnownColor((KnownColor) Enum.Parse(typeof(KnownColor), ((ToolStripComboBox) sender).Text));
+        }
+
+        private void graphWidthTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Settings.GraphWidth = (int) _interpreter.Interpret(graphWidthTextBox.Text);
+            }
+            // If there's something invalid, nothing can be done so just ignore it and move on
+            catch (Exception) {}
+        }
+
+        private void resolutionTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                // Reciprocal, so as resolution increases, so does the number of samples (more friendly than entering decimals)
+                Settings.Resolution = 1 / _interpreter.Interpret(resolutionTextBox.Text);
+            }
+            catch (Exception) {}
+        }
+        
+        private void togglePointsButton_Click(object sender, EventArgs e)
+        {
+            Settings.PointsVisible = !Settings.PointsVisible;
+        }
+
+        private void plotButton_Click_1(object sender, EventArgs e)
+        {
+            UpdatePlot();
         }
 
         private void areaCalculateButton_Click(object sender, EventArgs e)

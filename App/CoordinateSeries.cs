@@ -11,15 +11,13 @@ namespace App
         public double[] Y { get; set; }
         public int? ZeroX { get; private set; }
         public int? ZeroY { get; private set; }
+        private readonly MainForm _form;
 
-        public CoordinateSeries()
-        {
-        }
-
-        public CoordinateSeries(double[] x, double[] y)
+        public CoordinateSeries(double[] x, double[] y, MainForm form)
         {
             X = x;
             Y = y;
+            _form = form;
         }
 
         private bool IsValid => X.Length == Y.Length;
@@ -55,13 +53,13 @@ namespace App
                 points[i] = point;
 
                 // It's rare that the value with ever exactly equal 0
-                if (Math.Abs(X[i]) <= 0.1)
+                if (Math.Abs(X[i]) <= _form.Resolution / 2)
                 {
                     Console.WriteLine($"ZeroX at:\n\tX[i]: {X[i]}\n\tY[i]: {Y[i]}\n\txPerc: {xPerc}\n\tyPerc: {yPerc}\n\t x: {x}\n\t y: {y}");
                     ZeroX = x;
                 }
 
-                if (Math.Abs(Y[i]) <= 0.1)
+                if (Math.Abs(Y[i]) <= _form.Resolution / 2)
                 {
                     Console.WriteLine($"ZeroX at:\n\tX[i]: {X[i]}\n\tY[i]: {Y[i]}\n\txPerc: {xPerc}\n\tyPerc: {yPerc}\n\t x: {x}\n\t y: {y}");
                     ZeroY = y;

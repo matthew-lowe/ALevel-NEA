@@ -79,7 +79,7 @@ namespace App
             this.functionTextBox.Name = "functionTextBox";
             this.functionTextBox.Size = new System.Drawing.Size(237, 30);
             this.functionTextBox.TabIndex = 1;
-            this.functionTextBox.Text = "69x + 420";
+            this.functionTextBox.Text = "sin(x)";
             // 
             // label1
             // 
@@ -126,7 +126,7 @@ namespace App
             this.xLowerTextBox.Name = "xLowerTextBox";
             this.xLowerTextBox.Size = new System.Drawing.Size(40, 30);
             this.xLowerTextBox.TabIndex = 6;
-            this.xLowerTextBox.Text = "0";
+            this.xLowerTextBox.Text = "-pi";
             // 
             // label4
             // 
@@ -144,7 +144,7 @@ namespace App
             this.xUpperTextBox.Name = "xUpperTextBox";
             this.xUpperTextBox.Size = new System.Drawing.Size(40, 30);
             this.xUpperTextBox.TabIndex = 8;
-            this.xUpperTextBox.Text = "5";
+            this.xUpperTextBox.Text = "pi";
             // 
             // areaMethodComboBox
             // 
@@ -268,7 +268,9 @@ namespace App
             // resolutionTextBox
             // 
             this.resolutionTextBox.Name = "resolutionTextBox";
-            this.resolutionTextBox.Size = new System.Drawing.Size(25, 28);
+            this.resolutionTextBox.Size = new System.Drawing.Size(50, 28);
+            this.resolutionTextBox.Text = "10";
+            this.resolutionTextBox.TextChanged += new System.EventHandler(this.resolutionTextBox_TextChanged);
             // 
             // toolStripSeparator3
             // 

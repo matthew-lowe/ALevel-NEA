@@ -43,7 +43,7 @@ namespace App
             {
                 _resolution = value;
                 _mainForm.Resolution = _resolution;
-                _mainForm.Graph.Invalidate();
+                _mainForm.UpdatePlot();
             }
         }
 

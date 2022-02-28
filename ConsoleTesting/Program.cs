@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using MathsLibrary;
 using MathsLibrary.Interpreter;
 using MathsLibrary.Interpreter.Token;
 
