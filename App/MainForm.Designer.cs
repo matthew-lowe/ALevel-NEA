@@ -66,9 +66,9 @@ namespace App
             // chartContainer
             // 
             this.chartContainer.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.chartContainer.Location = new System.Drawing.Point(12, 12);
+            this.chartContainer.Location = new System.Drawing.Point(12, 31);
             this.chartContainer.Name = "chartContainer";
-            this.chartContainer.Size = new System.Drawing.Size(870, 568);
+            this.chartContainer.Size = new System.Drawing.Size(870, 549);
             this.chartContainer.TabIndex = 0;
             this.chartContainer.Text = "containerControl1";
             // 
@@ -164,7 +164,7 @@ namespace App
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(227, 30);
             this.label5.TabIndex = 10;
-            this.label5.Text = "Area calculation method:";
+            this.label5.Text = "Integral Method:";
             // 
             // label6
             // 
@@ -209,7 +209,7 @@ namespace App
             this.areaCalculateButton.Name = "areaCalculateButton";
             this.areaCalculateButton.Size = new System.Drawing.Size(175, 50);
             this.areaCalculateButton.TabIndex = 16;
-            this.areaCalculateButton.Text = "Calculate Area";
+            this.areaCalculateButton.Text = "Calculate Integral";
             this.areaCalculateButton.UseVisualStyleBackColor = true;
             this.areaCalculateButton.Click += new System.EventHandler(this.areaCalculateButton_Click);
             // 
@@ -309,8 +309,10 @@ namespace App
             this.Controls.Add(this.label1);
             this.Controls.Add(this.functionTextBox);
             this.Controls.Add(this.chartContainer);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon) (resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
-            this.Text = "MainForm";
+            this.Text = "Desmosn\'t";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();

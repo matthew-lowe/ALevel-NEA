@@ -91,7 +91,8 @@ namespace App
             try
             {
                 // Reciprocal, so as resolution increases, so does the number of samples (more friendly than entering decimals)
-                Settings.Resolution = 1 / _interpreter.Interpret(resolutionTextBox.Text);
+                var res = 1 / _interpreter.Interpret(resolutionTextBox.Text);
+                if (0 < res && res <= 1) Settings.Resolution = res;
             }
             catch (Exception) {}
         }
