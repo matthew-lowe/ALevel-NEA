@@ -91,7 +91,7 @@ namespace MathsLibrary.Interpreter
                 '+' => TokenType.Add,
                 '-' => TokenType.Sub,
                 '*' => TokenType.Mul,
-                '/' => TokenType.Mul,
+                '/' => TokenType.Div,
                 '^' => TokenType.Exp,
                 '.' => TokenType.Dot,
                 '(' => TokenType.LBracket,

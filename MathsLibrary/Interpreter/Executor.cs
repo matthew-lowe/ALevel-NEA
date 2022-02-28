@@ -21,7 +21,10 @@ namespace MathsLibrary.Interpreter {
                 case TokenType.Add:
                     return NodeCalculator.Add(left, right);
                 case TokenType.Sub:
-                    return NodeCalculator.Sub(left, right);
+                    if (left is not null)
+                        return NodeCalculator.Sub(left, right);
+                    else
+                        return NodeCalculator.Sub(NodeFactory.FromValue<double>(TokenType.Num, 0), right);
                 case TokenType.Mul:
                     return NodeCalculator.Mul(left, right);
                 case TokenType.Div:
@@ -34,14 +37,20 @@ namespace MathsLibrary.Interpreter {
                     var funcHandler = FunctionRegistry.GetFunction(rootValue);
                     var constant = FunctionRegistry.GetConstant(rootValue);
 
+                    Node<double> asNode = null;
                     if (funcHandler is not null)
-                        return NodeCalculator.Func(right, funcHandler);
+                        asNode = NodeCalculator.Func(right, funcHandler);
                     else if (constant is not null)
-                        return NodeFactory.FromValue(TokenType.Num, (double) constant);
+                        asNode = NodeFactory.FromValue(TokenType.Num, (double) constant);
                     else if (rootValue == "x")
-                        return NodeFactory.FromValue(TokenType.Num, value);
+                        asNode = NodeFactory.FromValue(TokenType.Num, value);
+
+                    if (asNode is not null)
+                        return left is null ? asNode : NodeCalculator.Mul(left, asNode);
                     else
-                        throw new InvalidDataException("Function or constant not recognised!");
+                        return null;
+                case TokenType.Num:
+                    return left is null ? root : NodeCalculator.Mul(left, NodeFactory.FromValue<double>(TokenType.Num, ((Node<double>) root).Value));
                 default:
                     return root;
             }

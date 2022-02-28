@@ -14,23 +14,20 @@ namespace ConsoleTesting {
         }
 
         private static void Main(string[] args) {
-            var lexer = new Lexer();
-            var parser = new Parser();
-            
-            while (true) {
+            var interpreter = new Interpreter();
+
+            while (true)
+            {
                 Console.Write("> ");
                 var input = Console.ReadLine();
-                Console.WriteLine("Input:", input);
-                
+
                 Console.Write("x = ");
                 var input_x = Console.ReadLine();
-                System.Console.WriteLine("x=", input_x);
-                var x = Executor.Evaluate(parser.Next(lexer.Tokenize(input_x)));
 
-                var tokens = lexer.Tokenize(input);
-                var tree = parser.Next(tokens);
-                var result = Differentiation.Differentiate(tree, 4);
-                Console.WriteLine(Math.Round(result, 8));
+                var x = interpreter.Interpret(input_x);
+                var exp = interpreter.ToTree(input);
+                exp.Print();
+                Console.WriteLine(interpreter.Interpret(input, x));
             }
         }
     }

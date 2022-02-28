@@ -18,6 +18,8 @@ namespace MathsLibrary.Interpreter
             _registeredFunctions.Add("sin", Math.Sin);
             _registeredFunctions.Add("cos", Math.Cos);
             _registeredFunctions.Add("tan", Math.Tan);
+            _registeredFunctions.Add("ln", Math.Log);
+            _registeredFunctions.Add("log", Math.Log10);
             
             _registeredConstants.Add("e", Math.E);
             _registeredConstants.Add("pi", Math.PI);

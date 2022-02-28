@@ -103,7 +103,7 @@ namespace MathsLibrary.Interpreter {
 
 		private static List<IToken> RemoveOuterBrackets(List<IToken> tokens) {
 			tokens = RemoveWhitespace(tokens);
-			if (tokens[0].Type.Equals(TokenType.LBracket) && tokens[tokens.Count - 1].Type.Equals(TokenType.RBracket) && ShouldRemoveBrackets(tokens))
+			if (tokens[0].Type.Equals(TokenType.LBracket) && tokens[^1].Type.Equals(TokenType.RBracket) && ShouldRemoveBrackets(tokens))
 				return tokens.Skip(1).Take(tokens.Count - 2).ToList();
 			return tokens;
 		}

@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Linq;
 using LiveChartsCore;
 using LiveChartsCore.Defaults;
+using LiveChartsCore.Geo;
 using LiveChartsCore.SkiaSharpView;
 using LiveChartsCore.SkiaSharpView.WinForms;
 using MathsLibrary;
@@ -15,56 +16,51 @@ namespace App
     public partial class MainForm : Form
     {
         private readonly double _resolution = 0.1;
-
-        private CartesianChart _chart;
         private Interpreter _interpreter;
+        private GraphControl _graph;
 
         public MainForm()
         {
             InitializeComponent();
             _interpreter = new Interpreter();
-            
+
             var size = chartContainer.Size;
             var location = chartContainer.Location;
-
-            var series = new LineSeries<ObservablePoint>();
-            var points = new List<ObservablePoint>();
-
-            for (var i = -Math.PI; i < Math.PI; i += _resolution)
-            {
-                points.Add(new ObservablePoint(i, Math.Exp(i)));
-            }
-
-            series.Values = points.ToArray();
-            series.Fill = null;
-            series.GeometrySize = 0;
-
-            _chart = new CartesianChart
-            {
-                Size = size,
-                Location = location,
-                Series = new ISeries[] {series},
-            };
-            
-            Controls.Add(_chart);
             chartContainer.Visible = false;
+
+            _graph = new GraphControl();
+            _graph.Size = size;
+            _graph.Location = location;
+            _graph.Name = "graphControl";
+            _graph.TabIndex = 0;
+
+            double[] X = {1, 2, 3, 4, 5};
+            double[] Y = {1, 2, 3, 2, 1};
+            var series = new CoordinateSeries(X, Y);
+            _graph.Series = new CoordinateSeries[] {series};
+
+            Controls.Add(_graph);
         }
 
         private void plotButton_Click_1(object sender, EventArgs e)
         {
             string function = functionTextBox.Text;
-            string lower_text = xLowerTextBox.Text;
             string upper_text = xUpperTextBox.Text;
+            string lower_text = xLowerTextBox.Text;
             
             double upper_bound = _interpreter.Interpret(upper_text);
             double lower_bound = _interpreter.Interpret(lower_text);
 
-            var points = new List<ObservablePoint>();
-
+            var X = new List<double>();
+            var Y = new List<double>();
+            
             try
             {
                 for (double i = lower_bound; i < upper_bound; i += _resolution)
-                    points.Add(new ObservablePoint(i, _interpreter.Interpret(function, i)));
+                {
+                    X.Add(i);
+                    Y.Add(_interpreter.Interpret(function, i));
+                }
             }
             catch (Exception)
             {
@@ -73,8 +69,10 @@ namespace App
                 return;
             }
 
-            _chart.Series.First().Values = points;
             functionTextBox.BackColor = SystemColors.Window;
+            _graph.Series[0].X = X.ToArray();
+            _graph.Series[0].Y = Y.ToArray();
+            _graph.Invalidate();
         }
 
         private void areaCalculateButton_Click(object sender, EventArgs e)
