@@ -93,7 +93,6 @@ namespace App
             this.xLowerTextBox.TabIndex = 6;
             this.xLowerTextBox.Text = "-pi";
             this.xLowerTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.xLowerTextBox.TextChanged += new System.EventHandler(this.xLowerTextBox_TextChanged);
             // 
             // functionTextBox
             // 
@@ -103,7 +102,6 @@ namespace App
             this.functionTextBox.Size = new System.Drawing.Size(181, 32);
             this.functionTextBox.TabIndex = 1;
             this.functionTextBox.Text = "sin(x)";
-            this.functionTextBox.TextChanged += new System.EventHandler(this.functionTextBox_TextChanged);
             // 
             // xUpperTextBox
             // 
@@ -123,7 +121,6 @@ namespace App
             this.label4.TabIndex = 7;
             this.label4.Text = "< x <";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // plotButton
             // 

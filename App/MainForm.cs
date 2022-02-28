@@ -141,25 +141,5 @@ namespace App
         private void MainForm_Load(object sender, EventArgs e)
         {
         }
-
-        private void xLowerTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void functionTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
