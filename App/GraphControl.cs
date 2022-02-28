@@ -17,6 +17,7 @@ namespace App
         {
             GraphPen = new Pen(Color.Red, 2);
             BackColor = Color.Black;
+            this.DoubleBuffered = true;
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -26,8 +27,7 @@ namespace App
             e.Graphics.DrawCurve(GraphPen, Series[0].AsPoints(ClientRectangle));
             
             if (DrawPoints) foreach (var p in Series[0].AsPoints(ClientRectangle))
-                    e.Graphics.DrawEllipse(new Pen(Color.Aqua), p.X, p.Y, 5, 5);
-            
+                    e.Graphics.DrawEllipse(new Pen(Color.FromArgb(184, 132, 246)), p.X, p.Y, 5, 5);
             // Draw the Y-Axis
             if (Series[0].ZeroX != null)
             {
@@ -47,7 +47,7 @@ namespace App
             Console.WriteLine(ClientRectangle.ToString());
 
             // Draw the graph border
-            e.Graphics.DrawRectangle(new Pen(Color.DodgerBlue, 6), ClientRectangle);
+            e.Graphics.DrawRectangle(new Pen(Color.FromArgb(184, 132, 246), 6), ClientRectangle);
         }
     }
 }

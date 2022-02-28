@@ -11,7 +11,7 @@ namespace App
     {
         public double Resolution { get; set; } = 0.1;
         public GraphControl Graph { get; private set; }
-        public Settings Settings { get; set; }
+        private Settings _setting { get; set; }
         
         private readonly Interpreter _interpreter;
 
@@ -19,20 +19,22 @@ namespace App
         {
             InitializeComponent();
             _interpreter = new Interpreter();
-            Settings = new Settings(this);
+            _setting = new Settings(this);
 
             var size = chartContainer.Size;
             var location = chartContainer.Location;
             chartContainer.Visible = false;
 
-            Graph = new GraphControl();
-            Graph.Size = size;
-            Graph.Location = location;
-            Graph.Name = "graphControl";
-            Graph.TabIndex = 0;
+            Graph = new GraphControl
+            {
+                Size = size, 
+                Location = location,
+                Name = "graphControl", 
+                TabIndex = 0
+            };
 
             var series = new CoordinateSeries(Array.Empty<double>(), Array.Empty<double>(), this);
-            Graph.Series = new CoordinateSeries[] {series};
+            Graph.Series = new[] {series};
 
             Controls.Add(Graph);
             UpdatePlot();
@@ -73,14 +75,14 @@ namespace App
 
         private void colourComboBox_TextChanged(object sender, EventArgs e)
         {
-            Settings.Colour = Color.FromKnownColor((KnownColor) Enum.Parse(typeof(KnownColor), ((ToolStripComboBox) sender).Text));
+            _setting.Colour = Color.FromKnownColor((KnownColor) Enum.Parse(typeof(KnownColor), ((ToolStripComboBox) sender).Text));
         }
 
         private void graphWidthTextBox_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                Settings.GraphWidth = (int) _interpreter.Interpret(graphWidthTextBox.Text);
+                _setting.GraphWidth = (int) _interpreter.Interpret(graphWidthTextBox.Text);
             }
             // If there's something invalid, nothing can be done so just ignore it and move on
             catch (Exception) {}
@@ -92,14 +94,14 @@ namespace App
             {
                 // Reciprocal, so as resolution increases, so does the number of samples (more friendly than entering decimals)
                 var res = 1 / _interpreter.Interpret(resolutionTextBox.Text);
-                if (0 < res && res <= 1) Settings.Resolution = res;
+                if (0 < res && res <= 1) _setting.Resolution = res;
             }
             catch (Exception) {}
         }
         
         private void togglePointsButton_Click(object sender, EventArgs e)
         {
-            Settings.PointsVisible = !Settings.PointsVisible;
+            _setting.PointsVisible = !_setting.PointsVisible;
         }
 
         private void plotButton_Click_1(object sender, EventArgs e)
@@ -138,6 +140,26 @@ namespace App
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+        }
+
+        private void xLowerTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void functionTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
