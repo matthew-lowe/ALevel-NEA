@@ -6,14 +6,16 @@ namespace App
 {
     public class GraphControl : Control
     {
-        private Pen _pen;
+        public Pen GraphPen { get; }
+        public bool DrawPoints { get; set; }
+        public Settings Settings { get; set; }
 
         // An array of the series to draw
         public CoordinateSeries[] Series { get; set; }
 
         public GraphControl()
         {
-            _pen = new Pen(Color.DodgerBlue, 6);
+            GraphPen = new Pen(Color.Red, 2);
             BackColor = Color.Black;
         }
 
@@ -21,10 +23,10 @@ namespace App
         {
             base.OnPaint(e);
             
-            e.Graphics.DrawCurve(new Pen(Color.Red, 2), Series[0].AsPoints(ClientRectangle));
+            e.Graphics.DrawCurve(GraphPen, Series[0].AsPoints(ClientRectangle));
             
-            foreach (var p in Series[0].AsPoints(ClientRectangle))
-                e.Graphics.DrawEllipse(new Pen(Color.Aqua), p.X, p.Y, 5, 5);
+            if (DrawPoints) foreach (var p in Series[0].AsPoints(ClientRectangle))
+                    e.Graphics.DrawEllipse(new Pen(Color.Aqua), p.X, p.Y, 5, 5);
             
             // Draw the Y-Axis
             if (Series[0].ZeroX != null)
@@ -45,7 +47,7 @@ namespace App
             Console.WriteLine(ClientRectangle.ToString());
 
             // Draw the graph border
-            e.Graphics.DrawRectangle(_pen, ClientRectangle);
+            e.Graphics.DrawRectangle(new Pen(Color.DodgerBlue, 6), ClientRectangle);
         }
     }
 }

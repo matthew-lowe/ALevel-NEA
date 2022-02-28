@@ -15,31 +15,54 @@ namespace App
 {
     public partial class MainForm : Form
     {
-        private readonly double _resolution = 0.1;
-        private Interpreter _interpreter;
-        private GraphControl _graph;
+        public double Resolution { get; set; } = 0.1;
+        public GraphControl Graph { get; private set; }
+        public Settings Settings { get; set; }
+        
+        private readonly Interpreter _interpreter;
 
         public MainForm()
         {
             InitializeComponent();
             _interpreter = new Interpreter();
+            Settings = new Settings(this);
 
             var size = chartContainer.Size;
             var location = chartContainer.Location;
             chartContainer.Visible = false;
 
-            _graph = new GraphControl();
-            _graph.Size = size;
-            _graph.Location = location;
-            _graph.Name = "graphControl";
-            _graph.TabIndex = 0;
+            Graph = new GraphControl();
+            Graph.Size = size;
+            Graph.Location = location;
+            Graph.Name = "graphControl";
+            Graph.TabIndex = 0;
 
             double[] X = {1, 2, 3, 4, 5};
             double[] Y = {1, 2, 3, 2, 1};
             var series = new CoordinateSeries(X, Y);
-            _graph.Series = new CoordinateSeries[] {series};
+            Graph.Series = new CoordinateSeries[] {series};
 
-            Controls.Add(_graph);
+            Controls.Add(Graph);
+        }
+
+        private void colourComboBox_TextChanged(object sender, EventArgs e)
+        {
+            Settings.Colour = Color.FromKnownColor((KnownColor) Enum.Parse(typeof(KnownColor), ((ToolStripComboBox) sender).Text));
+        }
+
+        private void graphWidthTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Settings.GraphWidth = (int) _interpreter.Interpret(graphWidthTextBox.Text);
+            }
+            // If there's something invalid, nothing can be done so just ignore it and move on
+            catch (Exception) {}
+        }
+        
+        private void togglePointsButton_Click(object sender, EventArgs e)
+        {
+            Settings.PointsVisible = !Settings.PointsVisible;
         }
 
         private void plotButton_Click_1(object sender, EventArgs e)
@@ -56,7 +79,7 @@ namespace App
             
             try
             {
-                for (double i = lower_bound; i < upper_bound; i += _resolution)
+                for (double i = lower_bound; i < upper_bound; i += Resolution)
                 {
                     X.Add(i);
                     Y.Add(_interpreter.Interpret(function, i));
@@ -70,9 +93,9 @@ namespace App
             }
 
             functionTextBox.BackColor = SystemColors.Window;
-            _graph.Series[0].X = X.ToArray();
-            _graph.Series[0].Y = Y.ToArray();
-            _graph.Invalidate();
+            Graph.Series[0].X = X.ToArray();
+            Graph.Series[0].Y = Y.ToArray();
+            Graph.Invalidate();
         }
 
         private void areaCalculateButton_Click(object sender, EventArgs e)
@@ -102,6 +125,10 @@ namespace App
                     areaMethodComboBox.Text = "Trapezium";
                     break;
             }
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
         }
     }
 }

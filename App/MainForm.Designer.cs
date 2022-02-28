@@ -32,6 +32,7 @@ namespace App
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.chartContainer = new System.Windows.Forms.ContainerControl();
             this.functionTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -48,6 +49,18 @@ namespace App
             this.areaLabel = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.areaCalculateButton = new System.Windows.Forms.Button();
+            this.toolStrip = new System.Windows.Forms.ToolStrip();
+            this.colourLabel = new System.Windows.Forms.ToolStripLabel();
+            this.colourComboBox = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.graphWidthLabel = new System.Windows.Forms.ToolStripLabel();
+            this.graphWidthTextBox = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.resolutionLabel = new System.Windows.Forms.ToolStripLabel();
+            this.resolutionTextBox = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.togglePointsButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // chartContainer
@@ -55,14 +68,14 @@ namespace App
             this.chartContainer.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.chartContainer.Location = new System.Drawing.Point(12, 12);
             this.chartContainer.Name = "chartContainer";
-            this.chartContainer.Size = new System.Drawing.Size(654, 426);
+            this.chartContainer.Size = new System.Drawing.Size(870, 568);
             this.chartContainer.TabIndex = 0;
             this.chartContainer.Text = "containerControl1";
             // 
             // functionTextBox
             // 
             this.functionTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.functionTextBox.Location = new System.Drawing.Point(732, 45);
+            this.functionTextBox.Location = new System.Drawing.Point(937, 55);
             this.functionTextBox.Name = "functionTextBox";
             this.functionTextBox.Size = new System.Drawing.Size(237, 30);
             this.functionTextBox.TabIndex = 1;
@@ -71,7 +84,7 @@ namespace App
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.label1.Location = new System.Drawing.Point(683, 12);
+            this.label1.Location = new System.Drawing.Point(888, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(156, 30);
             this.label1.TabIndex = 2;
@@ -80,7 +93,7 @@ namespace App
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.label2.Location = new System.Drawing.Point(686, 45);
+            this.label2.Location = new System.Drawing.Point(891, 55);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(40, 30);
             this.label2.TabIndex = 3;
@@ -89,7 +102,7 @@ namespace App
             // plotButton
             // 
             this.plotButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.plotButton.Location = new System.Drawing.Point(686, 181);
+            this.plotButton.Location = new System.Drawing.Point(891, 191);
             this.plotButton.Name = "plotButton";
             this.plotButton.Size = new System.Drawing.Size(175, 50);
             this.plotButton.TabIndex = 4;
@@ -100,7 +113,7 @@ namespace App
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.label3.Location = new System.Drawing.Point(686, 97);
+            this.label3.Location = new System.Drawing.Point(891, 107);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(156, 30);
             this.label3.TabIndex = 5;
@@ -109,7 +122,7 @@ namespace App
             // xLowerTextBox
             // 
             this.xLowerTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.xLowerTextBox.Location = new System.Drawing.Point(686, 130);
+            this.xLowerTextBox.Location = new System.Drawing.Point(891, 140);
             this.xLowerTextBox.Name = "xLowerTextBox";
             this.xLowerTextBox.Size = new System.Drawing.Size(40, 30);
             this.xLowerTextBox.TabIndex = 6;
@@ -118,7 +131,7 @@ namespace App
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.label4.Location = new System.Drawing.Point(732, 130);
+            this.label4.Location = new System.Drawing.Point(937, 140);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(58, 30);
             this.label4.TabIndex = 7;
@@ -127,7 +140,7 @@ namespace App
             // xUpperTextBox
             // 
             this.xUpperTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.xUpperTextBox.Location = new System.Drawing.Point(796, 130);
+            this.xUpperTextBox.Location = new System.Drawing.Point(1001, 140);
             this.xUpperTextBox.Name = "xUpperTextBox";
             this.xUpperTextBox.Size = new System.Drawing.Size(40, 30);
             this.xUpperTextBox.TabIndex = 8;
@@ -138,7 +151,7 @@ namespace App
             this.areaMethodComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.areaMethodComboBox.FormattingEnabled = true;
             this.areaMethodComboBox.Items.AddRange(new object[] {"Trapezium", "Mid-ordinate", "Simpson\'s"});
-            this.areaMethodComboBox.Location = new System.Drawing.Point(686, 276);
+            this.areaMethodComboBox.Location = new System.Drawing.Point(891, 286);
             this.areaMethodComboBox.Name = "areaMethodComboBox";
             this.areaMethodComboBox.Size = new System.Drawing.Size(227, 33);
             this.areaMethodComboBox.TabIndex = 9;
@@ -147,7 +160,7 @@ namespace App
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.label5.Location = new System.Drawing.Point(686, 243);
+            this.label5.Location = new System.Drawing.Point(891, 253);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(227, 30);
             this.label5.TabIndex = 10;
@@ -156,7 +169,7 @@ namespace App
             // label6
             // 
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.label6.Location = new System.Drawing.Point(686, 315);
+            this.label6.Location = new System.Drawing.Point(891, 325);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(153, 30);
             this.label6.TabIndex = 11;
@@ -165,7 +178,7 @@ namespace App
             // segmentCountTextBox
             // 
             this.segmentCountTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.segmentCountTextBox.Location = new System.Drawing.Point(834, 315);
+            this.segmentCountTextBox.Location = new System.Drawing.Point(1039, 325);
             this.segmentCountTextBox.Name = "segmentCountTextBox";
             this.segmentCountTextBox.Size = new System.Drawing.Size(40, 30);
             this.segmentCountTextBox.TabIndex = 12;
@@ -174,7 +187,7 @@ namespace App
             // areaLabel
             // 
             this.areaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.areaLabel.Location = new System.Drawing.Point(752, 345);
+            this.areaLabel.Location = new System.Drawing.Point(957, 355);
             this.areaLabel.Name = "areaLabel";
             this.areaLabel.Size = new System.Drawing.Size(161, 30);
             this.areaLabel.TabIndex = 14;
@@ -183,7 +196,7 @@ namespace App
             // label7
             // 
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.label7.Location = new System.Drawing.Point(686, 345);
+            this.label7.Location = new System.Drawing.Point(891, 355);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(60, 30);
             this.label7.TabIndex = 15;
@@ -192,7 +205,7 @@ namespace App
             // areaCalculateButton
             // 
             this.areaCalculateButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.areaCalculateButton.Location = new System.Drawing.Point(683, 378);
+            this.areaCalculateButton.Location = new System.Drawing.Point(888, 388);
             this.areaCalculateButton.Name = "areaCalculateButton";
             this.areaCalculateButton.Size = new System.Drawing.Size(175, 50);
             this.areaCalculateButton.TabIndex = 16;
@@ -200,11 +213,84 @@ namespace App
             this.areaCalculateButton.UseVisualStyleBackColor = true;
             this.areaCalculateButton.Click += new System.EventHandler(this.areaCalculateButton_Click);
             // 
+            // toolStrip
+            // 
+            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {this.colourLabel, this.colourComboBox, this.toolStripSeparator1, this.graphWidthLabel, this.graphWidthTextBox, this.toolStripSeparator2, this.resolutionLabel, this.resolutionTextBox, this.toolStripSeparator3, this.togglePointsButton});
+            this.toolStrip.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip.Name = "toolStrip";
+            this.toolStrip.Size = new System.Drawing.Size(1191, 28);
+            this.toolStrip.TabIndex = 17;
+            this.toolStrip.Text = "toolStrip1";
+            // 
+            // colourLabel
+            // 
+            this.colourLabel.Name = "colourLabel";
+            this.colourLabel.Size = new System.Drawing.Size(100, 25);
+            this.colourLabel.Text = "Graph Colour:";
+            // 
+            // colourComboBox
+            // 
+            this.colourComboBox.Items.AddRange(new object[] {"Red", "Aqua", "Yellow", "Green", "White", "Pink"});
+            this.colourComboBox.Name = "colourComboBox";
+            this.colourComboBox.Size = new System.Drawing.Size(75, 28);
+            this.colourComboBox.Text = "Red";
+            this.colourComboBox.TextChanged += new System.EventHandler(this.colourComboBox_TextChanged);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 28);
+            // 
+            // graphWidthLabel
+            // 
+            this.graphWidthLabel.Name = "graphWidthLabel";
+            this.graphWidthLabel.Size = new System.Drawing.Size(96, 25);
+            this.graphWidthLabel.Text = "Graph Width:";
+            // 
+            // graphWidthTextBox
+            // 
+            this.graphWidthTextBox.Name = "graphWidthTextBox";
+            this.graphWidthTextBox.Size = new System.Drawing.Size(25, 28);
+            this.graphWidthTextBox.Text = "2";
+            this.graphWidthTextBox.TextChanged += new System.EventHandler(this.graphWidthTextBox_TextChanged);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 28);
+            // 
+            // resolutionLabel
+            // 
+            this.resolutionLabel.Name = "resolutionLabel";
+            this.resolutionLabel.Size = new System.Drawing.Size(82, 25);
+            this.resolutionLabel.Text = "Resolution:";
+            // 
+            // resolutionTextBox
+            // 
+            this.resolutionTextBox.Name = "resolutionTextBox";
+            this.resolutionTextBox.Size = new System.Drawing.Size(25, 28);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 28);
+            // 
+            // togglePointsButton
+            // 
+            this.togglePointsButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.togglePointsButton.Image = ((System.Drawing.Image) (resources.GetObject("togglePointsButton.Image")));
+            this.togglePointsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.togglePointsButton.Name = "togglePointsButton";
+            this.togglePointsButton.Size = new System.Drawing.Size(102, 25);
+            this.togglePointsButton.Text = "Toggle Points";
+            this.togglePointsButton.Click += new System.EventHandler(this.togglePointsButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(981, 450);
+            this.ClientSize = new System.Drawing.Size(1191, 592);
+            this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.areaCalculateButton);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.areaLabel);
@@ -223,9 +309,26 @@ namespace App
             this.Controls.Add(this.chartContainer);
             this.Name = "MainForm";
             this.Text = "MainForm";
+            this.Load += new System.EventHandler(this.MainForm_Load);
+            this.toolStrip.ResumeLayout(false);
+            this.toolStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.ToolStripComboBox colourComboBox;
+        private System.Windows.Forms.ToolStripTextBox graphWidthTextBox;
+        private System.Windows.Forms.ToolStripTextBox resolutionTextBox;
+        private System.Windows.Forms.ToolStripButton togglePointsButton;
+        private System.Windows.Forms.ToolStripLabel colourLabel;
+        private System.Windows.Forms.ToolStripLabel graphWidthLabel;
+        private System.Windows.Forms.ToolStripLabel resolutionLabel;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+
+        private System.Windows.Forms.ToolStrip toolStrip;
+
 
         private System.Windows.Forms.Button areaCalculateButton;
 
