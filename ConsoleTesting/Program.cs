@@ -25,7 +25,6 @@ namespace ConsoleTesting {
 
                 var x = interpreter.Interpret(input_x);
                 var exp = interpreter.ToTree(input);
-                exp.Print();
                 Console.WriteLine(interpreter.Interpret(input, x));
             }
         }

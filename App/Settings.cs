@@ -2,6 +2,9 @@
 
 namespace App
 {
+    /// <summary>
+    /// Responsible for storing the shared settings that are used in the program
+    /// </summary>
     public class Settings
     {
         private MainForm _mainForm;

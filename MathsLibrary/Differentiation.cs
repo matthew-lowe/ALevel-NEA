@@ -2,6 +2,9 @@ using MathsLibrary.Interpreter;
 
 namespace MathsLibrary 
 {
+    /// <summary>
+    /// Responsible for turning a function into
+    /// </summary>
     public static class Differentiation
     {
         private static readonly double _h = 10e-7;

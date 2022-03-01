@@ -2,8 +2,19 @@
 
 namespace MathsLibrary
 {
+    /// <summary>
+    ///  Responsible for integrating various functions
+    /// </summary>
     public static class Integration
     {
+        /// <summary>
+        /// Integrate function with the trapezium rule
+        /// </summary>
+        /// <param name="root">The root node of the syntax tree</param>
+        /// <param name="a">The lower bound of the range</param>
+        /// <param name="b">The upper bound of the range</param>
+        /// <param name="n">The number of segments to use</param>
+        /// <returns>An approximation for the integral of 'root' between 'a' and 'b'</returns>
         public static double Trapezium(INode root, double a, double b, int n)
         {
             double h = (b - a) / n;
@@ -19,6 +30,14 @@ namespace MathsLibrary
             return sum;
         }
 
+        /// <summary>
+        /// Integrate function with the mid-ordinate rule
+        /// </summary>
+        /// <param name="root">The root node of the syntax tree</param>
+        /// <param name="a">The lower bound of the range</param>
+        /// <param name="b">The upper bound of the range</param>
+        /// <param name="n">The number of segments to use</param>
+        /// <returns>An approximation for the integral of 'root' between 'a' and 'b'</returns>
         public static double MidOrdinate(INode root, double a, double b, int n)
         {
             double h = (b - a) / n;
@@ -29,7 +48,15 @@ namespace MathsLibrary
 
             return sum * h;
         }
-
+        
+        /// <summary>
+        /// Integrate function with Simpson's rule
+        /// </summary>
+        /// <param name="root">The root node of the syntax tree</param>
+        /// <param name="a">The lower bound of the range</param>
+        /// <param name="b">The upper bound of the range</param>
+        /// <param name="n">The number of segments to use</param>
+        /// <returns>An approximation for the integral of 'root' between 'a' and 'b'</returns>
         public static double Simpsons(INode root, double a, double b, int n)
         {
             double h = (b - a) / n;

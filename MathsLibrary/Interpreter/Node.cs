@@ -2,6 +2,9 @@ using System;
 using MathsLibrary.Interpreter.Token;
 
 namespace MathsLibrary.Interpreter {
+    /// <summary>
+    /// A node on the syntax tree
+    /// </summary>
     public class Node : INode {
         public INode Left { get; set; }
         public INode Right { get; set; }
@@ -27,6 +30,10 @@ namespace MathsLibrary.Interpreter {
         }
     }
 
+    /// <summary>
+    /// A node on the syntax tree, with an associated value
+    /// </summary>
+    /// <typeparam name="TValue">The type of the associated value</typeparam>
     public class Node<TValue> : Node, IToken<TValue> {
         public TValue Value { get; set; }
 
@@ -39,6 +46,9 @@ namespace MathsLibrary.Interpreter {
         }
     }
 
+    /// <summary>
+    /// Calculate arithmetic in terms of nodes
+    /// </summary>
     public static class NodeCalculator {
         public static Node<TValue> Add<TValue>(Node<TValue> a, Node<TValue> b) =>
             NodeFactory.FromValue<TValue>(a.Type, (dynamic) a.Value + b.Value);
@@ -55,6 +65,9 @@ namespace MathsLibrary.Interpreter {
             NodeFactory.FromValue(a.Type, handler(a.Value));
     }
 
+    /// <summary>
+    /// Helpful methods for creating nodes
+    /// </summary>
     public static class NodeFactory {
         public static INode FromToken(IToken token)
         {

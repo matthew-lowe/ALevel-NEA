@@ -3,16 +3,36 @@ using System.IO;
 using MathsLibrary.Interpreter.Token;
 
 namespace MathsLibrary.Interpreter {
+    /// <summary>
+    /// Convert a tree into a single value
+    /// </summary>
     public static class Executor {
+        /// <summary>
+        /// Converts a tree into a single value
+        /// </summary>
+        /// <param name="root">The root node of the tree</param>
+        /// <returns>The numerical value of the input</returns>
         public static double Evaluate(INode root) {
             return ((Node<double>) Reduce(root, 0)).Value;
         }
 
+        /// <summary>
+        /// Converts a tree into a single value, replacing 'x' with a given input
+        /// </summary>
+        /// <param name="root">The root node of the tree</param>
+        /// <param name="value">The value of x to substitute in</param>
+        /// <returns>The numerical value of the input</returns>
         public static double Evaluate(INode root, double value)
         {
             return ((Node<double>) Reduce(root, value)).Value;
         }
 
+        /// <summary>
+        /// Common method to turn a tree of nodes into a single node
+        /// </summary>
+        /// <param name="root">The root node of the tree</param>
+        /// <param name="value">The value of x to substitute in</param>
+        /// <returns>The reduced tree as a single node</returns>
         public static INode Reduce(INode root, double value) {
             var left = root.Left is null ? null : (Node<double>) Reduce(root.Left, value);
             var right = root.Right is null ? null : (Node<double>) Reduce(root.Right, value);

@@ -1,5 +1,8 @@
 namespace MathsLibrary.Interpreter.Token
 {
+    /// <summary>
+    /// Implementation of a token without a value
+    /// </summary>
     public class Token : IToken
     {
         public TokenType Type { get; set; }
@@ -15,6 +18,10 @@ namespace MathsLibrary.Interpreter.Token
         }
     }
 
+    /// <summary>
+    /// Implementation of a token with a value
+    /// </summary>
+    /// <typeparam name="TValue">The type of the value</typeparam>
     public class Token<TValue> : Token, IToken<TValue>
     {
         public TValue Value { get; set; }

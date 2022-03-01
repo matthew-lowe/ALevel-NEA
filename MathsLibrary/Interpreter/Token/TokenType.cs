@@ -1,5 +1,8 @@
 ﻿namespace MathsLibrary.Interpreter.Token
 {
+    /// <summary>
+    /// Represents a type of token
+    /// </summary>
     public enum TokenType
     {
         Nil,

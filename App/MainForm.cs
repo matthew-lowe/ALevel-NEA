@@ -49,6 +49,12 @@ namespace App
             double upper_bound = _interpreter.Interpret(upper_text);
             double lower_bound = _interpreter.Interpret(lower_text);
 
+            if (upper_bound - lower_bound < 0)
+            {
+                functionTextBox.BackColor = Color.IndianRed;
+                return;
+            }
+            
             var X = new List<double>();
             var Y = new List<double>();
             
@@ -117,20 +123,37 @@ namespace App
             string n_text = segmentCountTextBox.Text;
             
             var tree = _interpreter.ToTree(function);
-            double lower = _interpreter.Interpret(lower_text);
-            double upper = _interpreter.Interpret(upper_text);
+            double lower_bound = _interpreter.Interpret(lower_text);
+            double upper_bound = _interpreter.Interpret(upper_text);
             int n = (int) _interpreter.Interpret(n_text);
+
+            if (n <= 0)
+            {
+                areaLabel.Text = "INVALID (N >= 1)";
+                return;
+            }
+                
+            if (upper_bound - lower_bound < 0)
+            {
+                functionTextBox.BackColor = Color.IndianRed;
+                return;
+            }
             
             switch (areaMethodComboBox.Text)
             {
                 case "Trapezium":
-                    areaLabel.Text =  Integration.Trapezium(tree, lower, upper, n).ToString();
+                    areaLabel.Text =  Integration.Trapezium(tree, lower_bound, upper_bound, n).ToString();
                     break;
                 case "Mid-ordinate":
-                    areaLabel.Text =  Integration.MidOrdinate(tree, lower, upper, n).ToString();
+                    areaLabel.Text =  Integration.MidOrdinate(tree, lower_bound, upper_bound, n).ToString();
                     break;
                 case "Simpson's":
-                    areaLabel.Text =  Integration.Simpsons(tree, lower, upper, n).ToString();
+                    if (n % 2 != 0)
+                    {
+                        areaLabel.Text = "NOT EVEN";
+                        return;
+                    }
+                    areaLabel.Text =  Integration.Simpsons(tree, lower_bound, upper_bound, n).ToString();
                     break;
                 default:
                     areaMethodComboBox.Text = "Trapezium";

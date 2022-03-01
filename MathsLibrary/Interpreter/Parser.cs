@@ -4,8 +4,16 @@ using System.Linq;
 using MathsLibrary.Interpreter.Token;
 
 namespace MathsLibrary.Interpreter {
+	/// <summary>
+	/// Class responsible for turning a list of tokens into a syntax tree
+	/// </summary>
 	public class Parser {
-		public INode Next(List<IToken> input) {
+		/// <summary>
+		/// Turn a list of tokens into a syntax tree
+		/// </summary>
+		/// <param name="input">The input expression</param>
+		/// <returns>The root node of the syntax tree</returns>
+		public INode Parse(List<IToken> input) {
 			if (!VerifyBrackets(input))
 				throw new Exception("fucking moron");
 

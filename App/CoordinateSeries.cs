@@ -1,10 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 
 namespace App
 {
+    /// <summary>
+    /// Represents a series of X and Y values for plotting
+    /// </summary>
     public class CoordinateSeries
     {
         public double[] X { get; set; }
@@ -22,6 +24,11 @@ namespace App
 
         private bool IsValid => X.Length == Y.Length;
 
+        /// <summary>
+        /// Return the contained X and Y value pairs as a series of point coordinates in the graph
+        /// </summary>
+        /// <param name="area">The area that the graph takes up</param>
+        /// <returns>An array of points to be directly plotted</returns>
         public Point[] AsPoints(Rectangle area)
         {
             if (!IsValid) return null;
@@ -55,13 +62,11 @@ namespace App
                 // It's rare that the value with ever exactly equal 0
                 if (Math.Abs(X[i]) <= _form.Resolution / 2)
                 {
-                    Console.WriteLine($"ZeroX at:\n\tX[i]: {X[i]}\n\tY[i]: {Y[i]}\n\txPerc: {xPerc}\n\tyPerc: {yPerc}\n\t x: {x}\n\t y: {y}");
                     ZeroX = x;
                 }
 
                 if (Math.Abs(Y[i]) <= _form.Resolution / 2)
                 {
-                    Console.WriteLine($"ZeroX at:\n\tX[i]: {X[i]}\n\tY[i]: {Y[i]}\n\txPerc: {xPerc}\n\tyPerc: {yPerc}\n\t x: {x}\n\t y: {y}");
                     ZeroY = y;
                 }
             }

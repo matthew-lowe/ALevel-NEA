@@ -4,8 +4,16 @@ using MathsLibrary.Interpreter.Token;
 
 namespace MathsLibrary.Interpreter
 {
+    /// <summary>
+    /// Responsible for converting input strings into a list of tokens
+    /// </summary>
     public class Lexer
     {
+        /// <summary>
+        /// Convert an input string into a list of tokens
+        /// </summary>
+        /// <param name="input">The input expression</param>
+        /// <returns>A list of tokens from the input string</returns>
         public List<IToken> Tokenize(string input)
         {
             var tokens = new List<IToken>();

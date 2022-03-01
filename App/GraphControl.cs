@@ -17,7 +17,7 @@ namespace App
         {
             GraphPen = new Pen(Color.Red, 2);
             BackColor = Color.Black;
-            this.DoubleBuffered = true;
+            DoubleBuffered = true;
         }
 
         protected override void OnPaint(PaintEventArgs e)
